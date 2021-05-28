@@ -7,7 +7,7 @@ import com.example.popularlibraries.databinding.ActivityMainBinding
 class MainActivity : AppCompatActivity(), MainView {
 
     private lateinit var binding: ActivityMainBinding
-    val presenter = MainPresenter(this)
+    private val presenter = MainPresenter(this, CountersModel())
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
