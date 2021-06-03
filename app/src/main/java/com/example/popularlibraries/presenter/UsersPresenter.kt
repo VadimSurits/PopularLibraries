@@ -8,7 +8,7 @@ import com.example.popularlibraries.view.UsersView
 import com.github.terrakok.cicerone.Router
 import moxy.MvpPresenter
 
-class UsersPresenter(val usersRepo: GithubUsersRepo, val router: Router) :
+class UsersPresenter(private val usersRepo: GithubUsersRepo, private val router: Router) :
     MvpPresenter<UsersView>() {
 
     class UsersListPresenter : IUserListPresenter {

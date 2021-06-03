@@ -20,7 +20,7 @@ class UsersFragment : MvpAppCompatFragment(), UsersView, BackButtonListener {
 
     private var binding: FragmentUsersBinding? = null
     val presenter: UsersPresenter by moxyPresenter {
-        UsersPresenter(GithubUsersRepo(), App.instance.router)
+        UsersPresenter(GithubUsersRepo(), App.Navigation.router)
     }
     var adapter: UsersRVAdapter? = null
 
