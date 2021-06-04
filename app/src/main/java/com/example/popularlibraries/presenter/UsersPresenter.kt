@@ -8,8 +8,9 @@ import com.example.popularlibraries.view.UsersView
 import com.github.terrakok.cicerone.Router
 import moxy.MvpPresenter
 
-class UsersPresenter(private val usersRepo: GithubUsersRepo, private val router: Router) :
-    MvpPresenter<UsersView>() {
+class UsersPresenter(
+    private val usersRepo: GithubUsersRepo, private val router: Router
+) : MvpPresenter<UsersView>() {
 
     class UsersListPresenter : IUserListPresenter {
         val users = mutableListOf<GithubUser>()
@@ -35,9 +36,10 @@ class UsersPresenter(private val usersRepo: GithubUsersRepo, private val router:
         }
     }
 
+    @Suppress("NAME_SHADOWING")
     fun loadData() {
         val users = usersRepo.getUsers()
-        usersListPresenter.users.addAll(users)
+        users.subscribe {users -> usersListPresenter.users.addAll(users) }
         viewState.updateList()
     }
 
